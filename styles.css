@@ -1,0 +1,32 @@
+@font-face {
+    font-family: "TotHopic";
+    src: url("./assets/TotHopic-dr2ER.ttf");
+}
+
+body {
+    min-height: 100dvh;
+}
+
+section {
+    min-height: 100dvh;
+}
+
+.scary {
+    font-family: "TotHopic";
+}
+
+h1:first-of-type {
+    font-size: 10em;
+    text-shadow: 5px 5px 0px rgb(110, 0, 0);
+}
+
+.numberItem {
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 20%;
+    display: inline-block;
+}
+
+.btn.btn-danger {
+    box-shadow: 5px 5px 0px rgb(110, 0, 0);
+}

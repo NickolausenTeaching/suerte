@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    background: black;
+    transition: background 0.2s;
+}
+
+svg {
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    width: 100dvw;
+    height: 100dvh;
+}
+
+.rayo {
+    stroke: yellow;
+    stroke-width: 2;
+    stroke-linecap: round;
+    opacity: 0;
+    animation: aparecer 0.2s ease-out, desvanecer 0.5s ease-in 0.2s;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes desvanecer {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes flash {
+    0% {
+        background: rgba(255, 255, 255, 1);
+    }
+
+    100% {
+        background: white;
+    }
+}
