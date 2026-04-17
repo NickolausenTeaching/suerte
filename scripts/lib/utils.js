@@ -8,3 +8,5 @@ Array.prototype.randomItem = function () {
 export const range = function (start, stop) {
     return Array.from({ length: Math.abs(stop - start) + 1 }, (_, i) => start + i)
 }
+
+export const relativeURL = (url) => window.location.hostname.concat(url)
