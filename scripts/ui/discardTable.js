@@ -1,11 +1,11 @@
 import { range } from "../lib/utils.js"
 
 export class DiscardTable {
-    constructor() {
+    constructor(initialCells = []) {
         /**
          * @type Cell[]
          */
-        this.cells = []
+        this.cells = initialCells.map(cell => new Cell(cell, true))
     }
 
     update(min, max) {

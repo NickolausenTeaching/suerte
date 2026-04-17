@@ -23,7 +23,13 @@ export class Generator {
         this.#min = min
         this.#max = max
         this.#excludedNumbers = excludeNumbers
-        this.#alreadyGenerated = []
+        const storedState = localStorage.getItem("numbers")
+        if (storedState) {
+            this.#alreadyGenerated = JSON.parse(storedState)
+        } else {
+            this.#alreadyGenerated = []
+            localStorage.setItem("numbers", JSON.stringify(this.#alreadyGenerated))
+        }
     }
 
     exclude(...numbers) {
@@ -34,7 +40,6 @@ export class Generator {
         let generated
         do {
             generated = Math.floor(Math.random() * (this.#max - this.#min + 1)) + this.#min;
-            console.log(generated)
         } while (this.#excludedNumbers.includes(generated) || this.#alreadyGenerated.includes(generated));
         this.#markAsGenerated(generated)
         return generated
@@ -62,10 +67,12 @@ export class Generator {
 
     #markAsGenerated(number) {
         this.#alreadyGenerated.push(number)
+        localStorage.setItem("numbers", JSON.stringify(this.#alreadyGenerated))
     }
 
     reset() {
         this.#alreadyGenerated = []
+        localStorage.setItem("numbers", JSON.stringify(this.#alreadyGenerated))
     }
 
     setMin(val) {
@@ -82,5 +89,9 @@ export class Generator {
 
     canGenerateMore() {
         return this.#alreadyGenerated.length < (this.#max - this.#min + 1)
+    }
+
+    getHistory() {
+        return Array.of(...this.#alreadyGenerated)
     }
 }

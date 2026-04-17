@@ -4,7 +4,7 @@ import { DiscardTable, Cell } from "./scripts/ui/discardTable.js"
 
 let lastTimeout = undefined
 const generator = new Generator()
-const discardTable = new DiscardTable()
+const discardTable = new DiscardTable(generator.getHistory())
 
 const audios = [
     "public/sounds/far-west.mp3",
