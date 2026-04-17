@@ -1,4 +1,5 @@
 import "../lib/utils.js"
+import { range } from "../lib/utils.js"
 
 const MIN_DEFAULT = 1
 const MAX_DEFAULT = 30
@@ -12,6 +13,8 @@ export class Generator {
     #min
     /** @type number */
     #max
+    /** @type number[] */
+    #availableNumbers
 
     /**
      * 
@@ -52,7 +55,7 @@ export class Generator {
             return generated
         }
         if (this.#max - this.#min <= amount) {
-            [ ].range(this.#min, this.#max).forEach(num => {
+            range(this.#min, this.#max).forEach(num => {
                 if (!this.#alreadyGenerated.includes(num)) {
                     generated.push(num)
                 }

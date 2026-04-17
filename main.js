@@ -11,7 +11,8 @@ const audios = [
     "public/sounds/ghigliottina.mp3",
     "public/sounds/billionaire.mp3",
     "public/sounds/tense.mp3",
-    "public/sounds/jaws.mp3"
+    "public/sounds/jaws.mp3",
+    "public/sounds/tick.mp3"
 ]
 
 function updateGenerateButtonState() {
@@ -47,7 +48,7 @@ function drawSuertedNumbers(suertedNumbers) {
         numContainer.classList.add("col", "display-1", "scary", "text-center")
         numContainer.innerText = number
         suertedTable.appendChild(numContainer)
-    
+
         const cell = discardTable.cells.find(c => c.number === number)
         if (cell) {
             cell.check()
@@ -60,15 +61,13 @@ function drawSuertedNumbers(suertedNumbers) {
 }
 
 function onAudioStart(audioDuration) {
+    const amount = Number(document.getElementById("numberAmt").value)
     lastTimeout && clearTimeout(lastTimeout)
     lastTimeout = setTimeout(() => {
-        const max = document.getElementById("numberMax")
-        const min = document.getElementById("numberMin")
-        const amount = document.getElementById("numberAmt")
         generator.exclude(discardTable.cells
             .filter(cell => cell.isChecked())
             .map(cell => cell.number))
-        const suertedNumbers = generator.generateRandoms(Number(amount.value))
+        const suertedNumbers = generator.generateRandoms(amount)
         hideSuertingLoading()
         drawSuertedNumbers(suertedNumbers)
         updateGenerateButtonState()
@@ -78,6 +77,13 @@ function onAudioStart(audioDuration) {
 function onGenerateClick() {
     const minHolderValue = Number(document.getElementById("numberMin").value)
     const maxHolderValue = Number(document.getElementById("numberMax").value)
+    const amount = Number(document.getElementById("numberAmt").value)
+    const nonCheckeds = Array.of(...document.querySelectorAll(`.numberItem[data-number]`).values())
+        .filter(checkbox => !checkbox.checked).length
+    if (amount >= nonCheckeds) {
+        alert("La suerte non può generare così tanti numeri!")
+        return
+    }
     generator.setMin(minHolderValue); generator.setMax(maxHolderValue);
     displaySuertingLoading()
 

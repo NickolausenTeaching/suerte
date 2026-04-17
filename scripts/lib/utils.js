@@ -1,5 +1,6 @@
 export const endingDurationMS = 5000
 export const endingDelta = 500
+export const numberAppearingDelay = 250
 
 Array.prototype.randomItem = function () {
     return this[Math.floor(Math.random() * this.length)]
