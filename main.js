@@ -1,17 +1,17 @@
-import { endingDelta, endingDurationMS, range, relativeURL } from "./lib/utils.js"
-import { Generator } from "./core/generator.js"
-import { DiscardTable, Cell } from "./ui/discardTable.js"
+import { endingDelta, endingDurationMS, range, relativeURL } from "./scripts/lib/utils.js"
+import { Generator } from "./scripts/core/generator.js"
+import { DiscardTable, Cell } from "./scripts/ui/discardTable.js"
 
 let lastTimeout = undefined
 const generator = new Generator()
 const discardTable = new DiscardTable()
 
 const audios = [
-    relativeURL("/public/sounds/far-west.mp3"),
-    relativeURL("/public/sounds/ghigliottina.mp3"),
-    relativeURL("/public/sounds/billionaire.mp3"),
-    relativeURL("/public/sounds/tense.mp3"),
-    relativeURL("/public/sounds/jaws.mp3")
+    "public/sounds/far-west.mp3",
+    "public/sounds/ghigliottina.mp3",
+    "public/sounds/billionaire.mp3",
+    "public/sounds/tense.mp3",
+    "public/sounds/jaws.mp3"
 ]
 
 function updateGenerateButtonState() {
