@@ -4,29 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Suerte | Random number generator</title>
-    <link rel="stylesheet" href="assets/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="lightnings.css">
+    <link rel="stylesheet" href="public/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="public/bootstrap/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="public/lightnings.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <svg class="fixed-top z-n1" id="svgContainer"></svg>
     <main class="d-flex flex-column text-white">
         <section class="d-flex flex-column justify-content-center align-items-center">
-            <h1 class="scary display-1">La Suerte</h1>
-            <form class="d-flex align-items-center gap-2">
-                <label for="numberAmt">Estrai</label>
-                <input class="form-control w-25" placeholder="2" value="2" min="1" max="50" type="number" name="numberAmt" id="numberAmt">
-                <p class="m-0" style="min-width: max-content;">numeri nell'intervallo</p>
+            <h1 class="scary scary-shadow display-1">La Suerte</h1>
+            <form class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-2 w-75">
+                <div class="d-flex align-items-center gap-2">
+                    <label for="numberAmt">Estrai</label>
+                    <input class="form-control" placeholder="2" value="2" min="1" max="50" type="number" name="numberAmt" id="numberAmt">
+                    <p class="m-0" style="min-width: max-content;">numeri nell'intervallo</p>
+                </div>
                 <label for="numberMin">da:</label>
                 <input class="form-control w-25" type="number" value="1" placeholder="1" min="1" max="100" name="numberMin" id="numberMin">
                 <label for="numberMax">a:</label>
                 <input class="form-control w-25" type="number" value="30" placeholder="30" min="1" max="100" name="numberMax" id="numberMax">
                 <a href="#suertedNumbers">
-                    <button id="generateBtn" type="button" class="btn btn-danger ms-4 fs-4">
+                    <button id="generateBtn" type="button" class="btn btn-danger ms-md-4 fs-4">
                         Genera
                     </button>
                 </a>
+                <button id="resetBtn" type="button" class="btn btn-warning ms-md-3 fs-4">
+                    Reset
+                </button>
             </form>
             <h2 class="scary mt-5">Escludendo</h2>
             <div class="container-fluid">
@@ -34,13 +39,16 @@
             </div>
         </section>
         <section id="suertedNumbers" class="d-flex flex-column justify-content-center align-items-center">
+            <div id="suertingLoading" class="position-absolute d-flex flex-column justify-content-center align-items-center">
+                <h2 class="scary scary-shadow display-1 text-center">La suerte <br class="d-md-none">sta arrivando</h2>
+            </div>
             <div class="container-fluid">
                 <div id="suertedNumbersTable" class="row"></div>
             </div>
         </section>
-        <script src="assets/bootstrap.min.js"></script>
-        <script src="lightnings.js"></script>
-        <script src="script.js"></script>
+        <script src="public/bootstrap/bootstrap.min.js"></script>
+        <script src="public/lightnings.js"></script>
+        <script type="module" src="scripts/main.js"></script>
     </main>
 </body>
 </html>

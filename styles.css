@@ -1,6 +1,6 @@
 @font-face {
     font-family: "TotHopic";
-    src: url("./assets/TotHopic-dr2ER.ttf");
+    src: url("./public/fonts/TotHopic-dr2ER.ttf");
 }
 
 body {
@@ -15,8 +15,8 @@ section {
     font-family: "TotHopic";
 }
 
-h1:first-of-type {
-    font-size: 10em;
+.scary-shadow {
+    /* font-size: 10em; */
     text-shadow: 5px 5px 0px rgb(110, 0, 0);
 }
 
@@ -29,4 +29,37 @@ h1:first-of-type {
 
 .btn.btn-danger {
     box-shadow: 5px 5px 0px rgb(110, 0, 0);
+}
+
+.btn.btn-warning {
+    box-shadow: 5px 5px 0px rgb(144, 120, 0);
+}
+
+.form-control[type="number"] {
+    max-width: 100px;
+    min-width: 70px;
+}
+
+#suertingLoading {
+    min-width: 100dvw;
+    min-height: 100dvh;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+#suertingLoading h2 {
+    animation: bounce 5s ease infinite;
+}
+
+@keyframes bounce {
+    from {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
 }
