@@ -73,6 +73,9 @@ section {
     border-radius: 20%;
     display: inline-block;
 }
+.numberItemCheckbox:checked {
+    background-color: var(--accent);
+}
 
 li {
     list-style-type: none;

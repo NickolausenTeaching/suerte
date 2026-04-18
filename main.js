@@ -52,7 +52,7 @@ function drawSuertedNumbers(suertedNumbers) {
         if (cell) {
             cell.check()
         }
-        const checkbox = document.querySelector(`.numberItem[data-number="${number}"]`)
+        const checkbox = document.querySelector(`.numberItemCheckbox[data-number="${number}"]`)
         if (checkbox) {
             checkbox.checked = true
         }
