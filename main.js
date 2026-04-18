@@ -10,9 +10,8 @@ const audios = [
     "public/sounds/far-west.mp3",
     "public/sounds/ghigliottina.mp3",
     "public/sounds/billionaire.mp3",
-    "public/sounds/tense.mp3",
     "public/sounds/jaws.mp3",
-    "public/sounds/tick.mp3"
+    "public/sounds/vecna-tick.mp3"
 ]
 
 function updateGenerateButtonState() {
@@ -26,7 +25,7 @@ function drawDiscardPanel(min, max) {
     discardTable.update(min, max)
     const table = discardTable.draw(min, max)
     numberTablePlaceholder.append(...table)
-    document.querySelectorAll(".numberItem").forEach(checkbox => {
+    document.querySelectorAll(".numberItemCheckbox").forEach(checkbox => {
         checkbox.addEventListener("change", (e) => {
             const num = Number(e.target.dataset.number)
             const cell = discardTable.cells.find(c => c.number === num)
@@ -44,8 +43,8 @@ function drawSuertedNumbers(suertedNumbers) {
     suertedTable.innerHTML = ""
 
     suertedNumbers.forEach(number => {
-        const numContainer = document.createElement("h3")
-        numContainer.classList.add("col", "display-1", "scary", "text-center")
+        const numContainer = document.createElement("li")
+        numContainer.classList.add("p-3", "display-1", "scary", "text-center")
         numContainer.innerText = number
         suertedTable.appendChild(numContainer)
 
@@ -60,7 +59,7 @@ function drawSuertedNumbers(suertedNumbers) {
     })
 }
 
-function onAudioStart(audioDuration) {
+function onAudioStart(audioDurationMS) {
     const amount = Number(document.getElementById("numberAmt").value)
     lastTimeout && clearTimeout(lastTimeout)
     lastTimeout = setTimeout(() => {
@@ -71,15 +70,18 @@ function onAudioStart(audioDuration) {
         hideSuertingLoading()
         drawSuertedNumbers(suertedNumbers)
         updateGenerateButtonState()
-    }, Math.ceil(audioDuration * 1000) - (endingDurationMS - endingDelta))
+    }, Math.ceil(audioDurationMS) - (endingDurationMS - endingDelta))
 }
 
 function onGenerateClick() {
     const minHolderValue = Number(document.getElementById("numberMin").value)
     const maxHolderValue = Number(document.getElementById("numberMax").value)
     const amount = Number(document.getElementById("numberAmt").value)
-    const nonCheckeds = Array.of(...document.querySelectorAll(`.numberItem[data-number]`).values())
+    const nonCheckeds = Array.of(...document.querySelectorAll(`.numberItemCheckbox[data-number]`).values())
         .filter(checkbox => !checkbox.checked).length
+
+    console.log(amount)
+    console.log(nonCheckeds)
     if (amount >= nonCheckeds) {
         alert("La suerte non può generare così tanti numeri!")
         return
@@ -89,7 +91,7 @@ function onGenerateClick() {
 
     const audioPlayer = new Audio()
     audioPlayer.addEventListener('loadedmetadata', (e) => {
-        onAudioStart(Number(e.target.duration))
+        onAudioStart(Number(e.target.duration) * 1000)
     })
     audioPlayer.src = audios.randomItem()
     audioPlayer.currentTime = 0

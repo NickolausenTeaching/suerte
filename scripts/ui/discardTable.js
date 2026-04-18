@@ -48,17 +48,17 @@ export class DiscardTable {
         }
         const numberTable = []
         this.cells.forEach(cell => {
-            const checkContainer = document.createElement("div")
-            checkContainer.classList.add("col", "d-flex", "flex-row", "align-items-center", "justify-content-center")
-    
+            const checkContainer = document.createElement("li")
+            checkContainer.classList.add("numberItemCheckboxContainer", "d-flex", "flex-row", "align-items-center", "justify-content-center")
+
             const checkbox = document.createElement("input")
             checkbox.setAttribute("type", "checkbox")
             checkbox.checked = cell.isChecked()
             checkbox.setAttribute("data-number", cell.number)
-            checkbox.classList.add("numberItem")
+            checkbox.classList.add("numberItemCheckbox")
     
             const numberText = document.createElement("span")
-            numberText.classList.add("scary", "fs-1", "d-inline-block", "ms-3")
+            numberText.classList.add("scary", "fs-1", "d-inline-block", "ps-2")
             numberText.innerText = cell.number.toString().padStart(2, "0")
     
             checkContainer.appendChild(checkbox)

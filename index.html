@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
 <body>
     <svg class="fixed-top z-n1" id="svgContainer"></svg>
     <main class="d-flex flex-column text-white">
-        <section class="d-flex flex-column justify-content-center align-items-center">
+        <section class="d-flex flex-column justify-content-center align-items-center mt-5 pt-5 mt-xxl-0 pt-xxl-0">
             <h1 class="scary scary-shadow display-1">La Suerte</h1>
             <form class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-2 w-75">
                 <div class="d-flex align-items-center gap-2">
@@ -34,17 +34,13 @@
                 </button>
             </form>
             <h2 class="scary mt-5">Escludendo</h2>
-            <div class="container-fluid">
-                <div id="numberTable" class="row row-cols-lg-6"></div>
-            </div>
+            <ul id="numberTable" class="d-flex flex-wrap w-100 px-5 justify-content-center gap-2"></ul>
         </section>
         <section id="suertedNumbers" class="d-flex flex-column justify-content-center align-items-center">
             <div id="suertingLoading" class="position-absolute d-flex flex-column justify-content-center align-items-center">
                 <h2 class="scary scary-shadow display-1 text-center">La suerte <br class="d-md-none">sta arrivando</h2>
             </div>
-            <div class="container-fluid">
-                <div id="suertedNumbersTable" class="row"></div>
-            </div>
+            <ul id="suertedNumbersTable" class="d-flex flex-row flex-wrap px-5 gap-5 justify-content-center"></ul>
         </section>
         <script src="public/bootstrap/bootstrap.min.js"></script>
         <script src="public/lightnings.js"></script>
