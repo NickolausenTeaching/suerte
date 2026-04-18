@@ -61,6 +61,7 @@ function drawSuertedNumbers(suertedNumbers) {
 
 function onAudioStart(audioDurationMS) {
     const amount = Number(document.getElementById("numberAmt").value)
+    const generateBtn = document.getElementById("generateBtn")
     lastTimeout && clearTimeout(lastTimeout)
     lastTimeout = setTimeout(() => {
         generator.exclude(discardTable.cells
@@ -69,6 +70,7 @@ function onAudioStart(audioDurationMS) {
         const suertedNumbers = generator.generateRandoms(amount)
         hideSuertingLoading()
         drawSuertedNumbers(suertedNumbers)
+        generateBtn.setAttribute("disabled", "false")
         updateGenerateButtonState()
     }, Math.ceil(audioDurationMS) - (endingDurationMS - endingDelta))
 }
@@ -80,12 +82,12 @@ function onGenerateClick() {
     const nonCheckeds = Array.of(...document.querySelectorAll(`.numberItemCheckbox[data-number]`).values())
         .filter(checkbox => !checkbox.checked).length
 
-    console.log(amount)
-    console.log(nonCheckeds)
     if (amount >= nonCheckeds) {
         alert("La suerte non può generare così tanti numeri!")
         return
     }
+    const generateBtn = document.getElementById("generateBtn")
+    generateBtn.setAttribute("disabled", "true")
     generator.setMin(minHolderValue); generator.setMax(maxHolderValue);
     displaySuertingLoading()
 
