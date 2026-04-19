@@ -130,7 +130,13 @@ export class Controller {
         new ExclusionTable(numberCells).draw()
     }
 
+    updateGenerateButton() {
+        
+    }
+
     #availableNumbersCount() {
-        return range(this.#min, this.#max).length - this.#excludedNumbers.length
+        const currentRange = range(this.#min, this.#max)
+        const excludedInRange = this.#excludedNumbers.filter(number => currentRange.includes(number))
+        return currentRange.length - excludedInRange.length
     }
 }
