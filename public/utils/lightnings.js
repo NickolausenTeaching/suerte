@@ -1,3 +1,4 @@
+/* not original */
 function generarRayo() {
     const svg = document.getElementById("svgContainer");
     const ancho = window.innerWidth;

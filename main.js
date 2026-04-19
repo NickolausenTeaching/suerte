@@ -63,6 +63,7 @@ function main() {
             console.error(error) // Mr. Casadei will handle perfectly this error
         }
     })
+    
     maxHolder.addEventListener('change', (e) => {
         try {
             controller.onMaxInput(Number(e.target.value))
@@ -72,6 +73,7 @@ function main() {
             console.error(error) // Mr. Casadei will handle perfectly this error
         }
     })
+
     amountHolder.addEventListener('change', (e) => {
         toggleGenerate(controller.canGenerateMore(Number(e.target.value)))
     })
