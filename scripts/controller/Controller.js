@@ -72,7 +72,6 @@ export class Controller {
         if (amountRequired == undefined) {
             throw new ControllerError(ControllerError.MESSAGES.undefinedValue.concat(`Parameter: amount`))
         }
-        console.log("Excluded numbers: " + this.#excludedNumbers.length)
         const wouldBeGeneratedCount = this.#availableNumbersCount() - amountRequired
         return wouldBeGeneratedCount <= range(this.#min, this.#max).length 
             && wouldBeGeneratedCount >= 0
