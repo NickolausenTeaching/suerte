@@ -1,5 +1,5 @@
 import { Controller } from "./scripts/controller/Controller.js"
-import InBrowserNumbersRepository from "./scripts/controller/InBrowserNumbesRepository.js"
+import InBrowserNumbersRepository from "./scripts/controller/InBrowserNumbersRepository.js"
 
 function toggleGenerate(state) {
     if (state) {
@@ -63,7 +63,7 @@ function main() {
             console.error(error) // Mr. Casadei will handle perfectly this error
         }
     })
-    
+
     maxHolder.addEventListener('change', (e) => {
         try {
             controller.onMaxInput(Number(e.target.value))
@@ -77,6 +77,11 @@ function main() {
     amountHolder.addEventListener('change', (e) => {
         toggleGenerate(controller.canGenerateMore(Number(e.target.value)))
     })
+
+    const checkboxes = document.querySelectorAll("input[type='checkbox']")
+    checkboxes.forEach(el => el.addEventListener("change", () => {
+        toggleGenerate(controller.canGenerateMore(Number(amountHolder.value)))
+    }))
 }
 
 document.addEventListener('DOMContentLoaded', main)

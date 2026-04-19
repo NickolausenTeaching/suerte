@@ -1,5 +1,5 @@
 import { range, waitForAudio } from "../lib/utils.js";
-import Suertable from "../model/SuertedTable.js";
+import Suertable from "../model/Suertable.js";
 import Suerte from "../model/Suerte.js";
 import ExclusionTable, { ExclusionTableCell } from "../view/ExclusionTable.js";
 import SuertedTable from "../view/SuertedTable.js";
@@ -69,16 +69,17 @@ export class Controller {
     }
 
     canGenerateMore(amountRequired = 1) {
-        if (typeof amountRequired === undefined) {
+        if (amountRequired == undefined) {
             throw new ControllerError(ControllerError.MESSAGES.undefinedValue.concat(`Parameter: amount`))
         }
+        console.log("Excluded numbers: " + this.#excludedNumbers.length)
         const wouldBeGeneratedCount = this.#availableNumbersCount() - amountRequired
         return wouldBeGeneratedCount <= range(this.#min, this.#max).length 
             && wouldBeGeneratedCount >= 0
     }
 
     async invokeSuerte(amountRequired) {
-        if (typeof amountRequired === undefined) {
+        if (amountRequired == undefined) {
             throw new ControllerError(ControllerError.MESSAGES.undefinedValue.concat(`Invalid parameter: amount`))
         }
         if (amountRequired < 0) {
@@ -122,7 +123,7 @@ export class Controller {
             if (state) {
                 this.#excludedNumbers.push(number)
             } else {
-                this.#excludedNumbers.removeItem(number)
+                this.#excludedNumbers = this.#excludedNumbers.removeItem(number)
             }
         }
         const numberCells = range(this.#min, this.#max)

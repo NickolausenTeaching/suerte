@@ -1,4 +1,3 @@
-import { Controller } from "../controller/Controller.js"
 import { range } from "../lib/utils.js"
 import ViewComponent from "./ViewComponent.js"
 

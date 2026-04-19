@@ -9,7 +9,7 @@ export default class InBrowserNumbersRepository extends NumberRepository {
     constructor() {
         super();
         const previousState = this.load()
-        if (typeof previousState === undefined) {
+        if (previousState == null) {
             this.save(this.#initialState)
         }
     }
@@ -22,7 +22,7 @@ export default class InBrowserNumbersRepository extends NumberRepository {
     save(numbers, override = false) {
         super.save(numbers)
         const previousState = this.load()
-        if (override || typeof previousState === undefined) {
+        if (override || previousState == null) {
             localStorage.setItem("numbers", JSON.stringify(numbers))
         } else {
             localStorage.setItem("numbers", JSON.stringify(previousState.concat(numbers)))

@@ -1,5 +1,5 @@
 import "../lib/utils.js"
-import Suertable from "./SuertedTable.js";
+import Suertable from "./Suertable.js";
 
 export default class Suerte {
     #excluded; #suertables
