@@ -97,7 +97,7 @@ export class Controller {
         })
         const suerted = new Suerte(this.#excludedNumbers, suertables).generate(amountRequired)
         this.#numbersRepository.save(suerted) 
-        this.#excludedNumbers = this.#numbersRepository.load()
+        this.#excludedNumbers = this.#excludedNumbers.insertNoDuplicates(suerted)
         const resultTable = new SuertedTable(); resultTable.clear()
         const loading = new SuerteLoading(); loading.draw()
         return waitForAudio(audios.randomItem()).then(() => {

@@ -10,6 +10,10 @@ Array.prototype.removeItem = function (toRemove) {
     return this.filter(n => n !== toRemove)
 }
 
+Array.prototype.insertNoDuplicates = function (items) {
+    return Array.of(...new Set(this.concat(items)))
+}
+
 export const range = function (start, stop) {
     return Array.from({ length: Math.abs(stop - start) + 1 }, (_, i) => start + i)
 }
