@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Suerte | Random number generator</title>
+    <title>La Suerte | Random Number Generator</title>
     <link rel="stylesheet" href="public/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="public/bootstrap/bootstrap-icons.min.css">
     <link rel="stylesheet" href="public/lightnings.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="public/favicon.jpg">
+    <script defer src="public/bootstrap/bootstrap.min.js"></script>
+    <script defer src="public/lightnings.js"></script>
+    <script defer type="module" src="main.js"></script>
 </head>
 <body>
     <svg class="fixed-top z-n1" id="svgContainer"></svg>
@@ -39,14 +43,17 @@
             <ul id="numberTable" class="d-flex flex-wrap w-100 px-5 justify-content-center gap-2"></ul>
         </section>
         <section id="suertedNumbers" class="d-flex flex-column justify-content-center align-items-center">
-            <div id="suertingLoading" class="position-absolute d-flex flex-column justify-content-center align-items-center">
+            <div id="suertingLoading" class="d-none position-absolute d-flex flex-column justify-content-center align-items-center">
                 <h2 class="scary scary-shadow display-1 text-center">La suerte <br class="d-md-none">sta arrivando</h2>
             </div>
             <ul id="suertedNumbersTable" class="d-flex flex-row flex-wrap px-5 gap-5 justify-content-center"></ul>
         </section>
-        <script src="public/bootstrap/bootstrap.min.js"></script>
-        <script src="public/lightnings.js"></script>
-        <script type="module" src="main.js"></script>
+        <footer class="text-white-50 w-full text-center p-5">
+            <small>By 
+                <a class="text-white-50" href="https://lucacasadei.net/">L. Casadei</a> & 
+                <a class="text-white-50" href="http://nicholasmagi.it">N. Magi</a> // Spice up oral exams!
+            </small>
+        </footer>
     </main>
 </body>
 </html>
